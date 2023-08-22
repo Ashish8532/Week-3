@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise-6</title>
+</head>
+
+<body>
+    <h4>Results displayed on console.</h4>
+    <script>
+        
+        // This function will take array with duplicate element and 
+        // return the distinct array.
+        function findUnique(arr) {
+            let uniqueArray = [];
+            let index = 0;
+
+            for (let i = 0; i < arr.length; i++) {
+                let j;
+                for (j = 0; j < i; j++) {
+                    if (arr[i] == arr[j]) {
+                        break;
+                    }
+                }
+                if (i == j) {
+                    uniqueArray[index] = arr[i];
+                    index++;
+                }
+            }
+            console.log("Unique number from array:");
+            return uniqueArray;
+        }
+
+        
+        // Find intersection of two array
+        function findIntersection(arr1, arr2) {
+            const newArray = [];
+
+            for (const num1 of arr1) {
+                for (const num2 of arr2) {
+                    if (num1 === num2 && !newArray.includes(num1)) {
+                        newArray.push(num1);
+                    }
+                }
+            }
+            console.log("Intersection of two array.");
+            return newArray;
+        }
+
+        const array = [1, 2, 1, 4, 3, 3, 2, 5, 6, 7, 4, 6, 8, 6, 8, 7, 2, 3, 4, 1];
+        const result1 = findUnique(array)
+        console.log(result1);
+
+        const array1 = [1, 2, 3, 4, 5, 4];
+        const array2 = [3, 4, 5, 6, 7];
+        const result2 = findIntersection(array1, array2);
+
+        console.log(result2);
+    </script>
+</body>
+
+</html>
