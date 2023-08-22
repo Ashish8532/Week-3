@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise-7</title>
+</head>
+
+<body>
+
+    <h4>Results are displayed on console.</h4>
+    <script>
+        // student object which contain properties name, grade, and array of courses.
+        const student = { name: "Ashish", gradeLevel: 9, courses: ["Math", "Science", "History"] };
+
+        // This function will add a course to the array of coursese and 
+        // It takes coursename as parameter.
+        function addCourse(courseName) {
+            if (!this.courses.includes(courseName)) {
+                this.courses.push(courseName);
+                console.log(`Course (${courseName}) added successfully.`);
+            }
+            else {
+                console.log("Course already exists.");
+            }
+        }
+
+        // This function will remove a course from the array of coursese and 
+        // It takes coursename as parameter.
+        function removeCourse(courseName) {
+            const index = this.courses.indexOf(courseName);
+            if (index !== -1) {
+                this.courses.splice(index, 1);
+                console.log(`Course (${courseName}) removed successfully.`);
+            }
+            else {
+                console.log("Course not found.");
+            }
+        }
+
+        student.addCourse = addCourse;
+        student.removeCourse = removeCourse;
+
+        // Try to add course
+        student.addCourse("English");
+        student.addCourse("Math"); 
+
+        // try to remove course
+        student.removeCourse("Science");
+        student.removeCourse("Gym");
+
+        // display on console
+        console.log(student.name);
+        console.log(student.gradeLevel)
+        console.log(student.courses);
+
+
+        // This function taske a array of students and a coursename 
+        // returns a new array containing only the students that are taking the given course.
+        function filterStudentByCourseTaken(students, courseName) {
+            return students.filter(student => student.courses.includes(courseName));
+        }
+
+
+        // Array odf student object
+        const students = [
+            { name: "Ashish", gradeLevel: 10, courses: ["Math", "Science"] },
+            { name: "Vipul", gradeLevel: 10, courses: ["History", "English"] },
+            { name: "Ravi", gradeLevel: 10, courses: ["Math", "English"] },
+            { name: "Abhiraj", gradeLevel: 10, courses: ["Science", "History"] }
+        ];
+
+        const courseName = "Math";
+        const takenCourseByStudent = filterStudentByCourseTaken(students, courseName);
+        console.log(takenCourseByStudent);
+    </script>
+</body>
+
+</html>
