@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise-8</title>
+</head>
+
+<body>
+    <h4>Results are displayed on console.</h4>
+    <script>
+
+        // Using Async/Await
+        async function simulateOperationAsync() {
+            console.log("Starting simulated asynchronous operation...");
+            await delay(4000);
+            console.log("Simulated asynchronous operation is complete!");
+        }
+        function delay(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+        simulateOperationAsync();
+    </script>
+</body>
+
+</html>
