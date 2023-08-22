@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise-2</title>
+</head>
+<body>
+    <script>
+        // prompt user name input
+        let input = prompt("Please enter your name: ");
+
+        if(input == null)
+        {
+            alert("Please enter your name!");
+        }
+        else
+        {
+            // display greetings
+            alert("Welcome: " + input);
+        }
+
+        // add two numbers and display in alert 
+        var a = parseFloat(prompt("Enter first number: "));
+        
+        var b = parseFloat(prompt("Enter second number: "));
+
+        var sum = a+b;
+        alert("The sum of " + a + " and " + b + "numbers is: " + sum);
+    </script>
+</body>
+</html>
