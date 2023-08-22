@@ -399,3 +399,6 @@ FodyWeavers.xsd
 
 day-2/Exercise-1/build/js/hello.js
 day-2/Exercise-2/build/js/person.js
+day-2/Exercise-3/build/person.js
+day-2/Exercise-3/build/person.js.map
+day-2/Exercise-3/package.json
