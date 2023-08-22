@@ -8,7 +8,8 @@ function doSum() {
 
     // Here  I have introduced one Syntax error by removing parenthesis in if statement.
     // the syntax error is displayed on VS code debug console at compile-time error.
-    if (!isNaN(num1) && !isNaN(num2) {
+    // and I have rectified by debugging with VSCode.
+    if (!isNaN(num1) && !isNaN(num2)) {
         let sum = num1 + num2;
         document.getElementById("add").innerHTML = "Addition is: " + sum;
     }
