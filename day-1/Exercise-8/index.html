@@ -10,17 +10,20 @@
 <body>
     <h4>Results are displayed on console.</h4>
     <script>
-        // Asynchronous callback
-        function simulateAsyncOperation(callback) {
-            // Simulate an asynchronous operation with setTimeout
-            setTimeout(callback, 4000); // Simulated operation is complete with, Simulated delay of 2000 milliseconds (2 seconds)
-        }
-        function callbackFunction() {
-            console.log("Simulated asynchronous operation is complete!");
-        }
-        console.log("Starting simulated asynchronous operation...");
-        simulateAsyncOperation(callbackFunction);
 
+        // Using Promises
+        function simulateAsyncOperationPromise(callback) {
+            return new Promise(function (resolve, reject) {
+                setTimeout(callback, 3000);
+            });
+        };
+
+        console.log("Starting simulated asynchronous operation using promise...");
+        simulateAsyncOperationPromise()
+            .then(() => {
+                console.log("Simulated asynchronous operation is complete!");
+                console.log("Continuing with other tasks...");
+            });
     </script>
 </body>
 
