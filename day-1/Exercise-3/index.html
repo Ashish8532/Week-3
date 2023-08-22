@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise-3</title>
+    <style>
+        .container {
+            border: 2px solid;
+            width: 250px;
+            font-size: 18px;
+        }
+        form {
+            padding: 20px;
+        }
+        .container p {
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    
+    <button type="button" onclick="myFunction()">Click Here</button><br><br>
+
+    <div class="container" >
+        <form>
+            <label for="num1">Enter first number:</label><br>
+            <input type="number" id="num1" name="num1" required><br>
+            <label for="num2">Enter second number:</label><br>
+            <input type="number" id="num2" name="num2" required><br><br>
+            <button type="button" id="sum">Calculate Sum</button>
+        </form>
+
+        <p id="add"></p>
+    </div>
+
+    <script>
+        // The function is being called when user hits the Click Here button 
+        // return one alert message.
+        function myFunction()
+        {
+            alert("Button Clicked!");
+        }
+
+        // Here I have added the eventlistener on calculate sum button 
+        document.getElementById("sum").addEventListener("click", doSum);
+
+        // This method will do the addition operation for user input.
+        function doSum()
+        {
+            var num1 = parseFloat(document.getElementById("num1").value);
+            var num2 = parseFloat(document.getElementById("num2").value);
+
+            if(!isNaN(num1) && !isNaN(num2))
+            {
+                var sum = num1 + num2;
+                document.getElementById("add").innerHTML = "Addition is: " + sum;
+            }
+            else
+            {
+                alert("Enter numbers properly!");
+            }
+        }
+    </script>
+</body>
+</html>
