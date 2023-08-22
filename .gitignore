@@ -398,3 +398,4 @@ FodyWeavers.xsd
 *.sln.iml
 
 day-2/Exercise-1/build/js/hello.js
+day-2/Exercise-2/build/js/person.js
