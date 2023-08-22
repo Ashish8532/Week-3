@@ -11,19 +11,16 @@
     <h4>Results are displayed on console.</h4>
     <script>
 
-        // Using Promises
-        function simulateAsyncOperationPromise(callback) {
-            return new Promise(function (resolve, reject) {
-                setTimeout(callback, 3000);
-            });
-        };
-
-        console.log("Starting simulated asynchronous operation using promise...");
-        simulateAsyncOperationPromise()
-            .then(() => {
-                console.log("Simulated asynchronous operation is complete!");
-                console.log("Continuing with other tasks...");
-            });
+        // Using Async/Await
+        async function simulateOperationAsync() {
+            console.log("Starting simulated asynchronous operation...");
+            await delay(4000);
+            console.log("Simulated asynchronous operation is complete!");
+        }
+        function delay(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+        simulateOperationAsync();
     </script>
 </body>
 
