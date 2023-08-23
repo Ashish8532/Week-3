@@ -8,7 +8,7 @@ import { HelloComponent } from './hello/hello.component';
 @NgModule({
   declarations: [
     AppComponent,
-    HelloComponent
+    HelloComponent,
   ],
   imports: [
     BrowserModule,
