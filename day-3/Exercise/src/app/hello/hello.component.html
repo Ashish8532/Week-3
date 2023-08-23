@@ -14,7 +14,6 @@
     <!-- Here I have implemented Event binding to change change button color each time when button clicked. -->
     <button class="button" [style.backgroundColor]="newColour" (click) = "FunctionClick()">Click Here</button>
     <br><br>
-
     
-    
+    <app-nested [parentData]="parentMessage"></app-nested>
 </div>

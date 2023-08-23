@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-hello',
@@ -19,7 +19,4 @@ export class HelloComponent {
   }
 
   parentMessage: string = "Hii from parent";
-
-  @Input() 
-  childData!: string;
 }
