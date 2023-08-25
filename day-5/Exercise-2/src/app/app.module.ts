@@ -10,6 +10,8 @@ import { ContactComponent } from './contact/contact.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { BlogDetailComponent } from './blog-detail/blog-detail.component';
+import { CreatePostComponent } from './create-post/create-post.component';
+import { EditPostComponent } from './edit-post/edit-post.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { BlogDetailComponent } from './blog-detail/blog-detail.component';
     BlogComponent,
     ContactComponent,
     BlogDetailComponent,
+    CreatePostComponent,
+    EditPostComponent,
   ],
   imports: [
     BrowserModule,
