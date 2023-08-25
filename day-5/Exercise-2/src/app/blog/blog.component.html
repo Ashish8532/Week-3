@@ -1,0 +1,32 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="row">
+      <div class="col-6">
+        <h2><b>Blog Post</b></h2>
+      </div>
+      <div class="col-6 text-end">
+        <a class="btn btn-primary" href="#" routerLink="/create-post">Create Post</a>
+      </div>
+    </div>
+    <hr />
+    <div class="col-md-4 mt-4" *ngFor="let post of posts">
+      <div class="mb-4">
+        <div class="card border-dark custom-card">
+          <div class="card-header bg-danger text-white">
+            <h4 class="mb-0">Blog Id: {{ post.id }}</h4>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">{{ post.title | uppercase }}</h3>
+            <!-- Additional post information can be added here -->
+            <p class="card-text">{{ post.body }}</p>
+          </div>
+          <div class="card-footer">
+
+
+            <button class="btn btn-success" [routerLink]="['/blog-detail', post.id]">View Details</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
