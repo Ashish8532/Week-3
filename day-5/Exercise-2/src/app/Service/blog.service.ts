@@ -8,11 +8,21 @@ import { Blog } from '../Models/blog';
 })
 export class BlogService {
 
-  private apiUrl = 'https://jsonplaceholder.typicode.com/posts';
+  private postUrl = 'https://jsonplaceholder.typicode.com/posts';
+  private commentUrl = 'https://jsonplaceholder.typicode.com/posts/${post.id}/comments';
+  blogPosts: any[] = [];
 
   constructor(private httpClient: HttpClient) { }
 
   fetchPost(): Observable<Blog[]> {
-    return this.httpClient.get<Blog[]>(this.apiUrl);
+    return this.httpClient.get<Blog[]>(this.postUrl);
+  }
+
+  getPostDetails(postId: number) {
+    return this.httpClient.get<any>(`https://jsonplaceholder.typicode.com/posts/${postId}`);
+  }
+
+  getCommentsForPost(postId: number) {
+    return this.httpClient.get<any[]>(`https://jsonplaceholder.typicode.com/comments?postId=${postId}`);
   }
 }

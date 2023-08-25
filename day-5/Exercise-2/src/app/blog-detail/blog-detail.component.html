@@ -1,0 +1,32 @@
+<div class="container mt-5">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <div class="row col-12 pt-3">
+            <div class="col-6">
+                <div>
+                    <h2 class="fw-bold">Post Details</h2>
+                </div>
+            </div>
+            <div class=" col-6 text-end">
+                <a routerLink="/blog" class="btn btn-secondary mb-3" style="width:150px">Back to Post</a>
+            </div>
+        </div>
+        <hr />
+        <div class="card mb-4">
+          <div class="card-body">
+            <h2 class="card-title">Title: {{ post.title }}</h2>
+            <p class="card-text">{{ post.body }}</p>
+          </div>
+        </div>
+        <h4 class="mb-3">All Comments</h4>
+        <ul class="list-group">
+          <li *ngFor="let comment of comments" class="list-group-item">
+            <p>{{ comment.body }}</p>
+            <p class="mb-0"><strong>Name:</strong> {{ comment.name }}</p>
+            <p class="mb-0"><strong>Email:</strong> {{ comment.email }}</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
