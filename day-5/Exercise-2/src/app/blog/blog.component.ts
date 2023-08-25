@@ -19,9 +19,8 @@ export class BlogComponent implements OnInit {
   }
 
   getPost() {
-    this.postService.fetchPost().subscribe((data: Blog[])=>{
+    this.postService.getPost().subscribe((data: Blog[])=>{
       this.posts = data;
-      console.log("Blog Fetched Successfully.");
     }); 
   }
 }

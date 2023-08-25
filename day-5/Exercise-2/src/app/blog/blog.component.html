@@ -16,13 +16,13 @@
             <h4 class="mb-0">Blog Id: {{ post.id }}</h4>
           </div>
           <div class="card-body">
-            <h3 class="card-title">{{ post.title | uppercase }}</h3>
+            <h3 class="card-title">{{ post.title | titlecase }}</h3>
             <!-- Additional post information can be added here -->
             <p class="card-text">{{ post.body }}</p>
           </div>
           <div class="card-footer">
 
-
+            <button class="btn btn-warning me-sm-2" [routerLink]="['/edit-post', post.id]">Edit Post</button>
             <button class="btn btn-success" [routerLink]="['/blog-detail', post.id]">View Details</button>
           </div>
         </div>

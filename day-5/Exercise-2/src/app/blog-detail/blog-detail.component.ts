@@ -24,7 +24,7 @@ export class BlogDetailComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.postId = +params['id'];
 
-      this.postService.getPostDetails(this.postId)
+      this.postService.getPostById(this.postId)
         .subscribe(post => {
           this.post = post;
           console.log("Post Displayed with correponding comments.");
