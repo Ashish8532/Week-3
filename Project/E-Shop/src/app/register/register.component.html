@@ -1,0 +1,11 @@
+<div *ngIf="!(isAuthenticated$ | async)" class="registration">
+    <h2>Registration</h2>
+    <form (ngSubmit)="register()">
+      <label>Email:</label>
+      <input type="email" [(ngModel)]="email" required>
+      <label>Password:</label>
+      <input type="password" [(ngModel)]="password" required>
+      <button type="submit">Register</button>
+    </form>
+  </div>
+  

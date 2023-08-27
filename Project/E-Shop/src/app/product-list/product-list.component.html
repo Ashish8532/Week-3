@@ -1,0 +1,25 @@
+<div class="row pb-3" style="width:90%; margin: 20px 80px 20px 90px">
+    <div class="text-center text-dark">
+        <h1>Welcome to E-Shop</h1>
+    </div>
+    <hr />
+    <div class="col-lg-3 col-md-6 mt-4" *ngFor="let product of products">
+        <div class="row p-2">
+            <div class="col-12 p-1 border rounded-2">
+                <div>
+                    <a [routerLink]="['/product-details', product.id]" style="text-decoration:none">
+                        <div class="text-center">
+                            <img style="height:340px; width:250px" [src]="product.image" alt="image" class="card-img-top rounded" />
+                        </div>
+                        <div class="mt-2 text-truncate text-dark h5 " style="max-width: 248px; margin-left: 10px;">
+                            {{ product.title | titlecase }}
+                            <div class="d-flex flex-row align-items-center">
+                                <span class="text-success fw-bold me-lg-2">{{product.price | currency: 'INR'}}</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

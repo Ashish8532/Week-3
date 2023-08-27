@@ -1,0 +1,22 @@
+<div *ngIf="isAuthenticated$ | async" class="confirmation-page">
+    <h2>Order Confirmation</h2>
+    <p>Your order has been placed successfully. Thank you for shopping with us!</p>
+  
+    <h3>Shipping Details:</h3>
+    <p>Name: {{ shippingDetails?.name }}</p>
+    <p>Address: {{ shippingDetails?.address }}</p>
+    <p>Phone: {{ shippingDetails?.phone }}</p>
+    <p>City: {{ shippingDetails?.city }}</p>
+    <p>State: {{ shippingDetails?.state }}</p>
+    <p>Pin Code: {{ shippingDetails?.pincode }}</p>
+  
+    <h3>Ordered Items:</h3>
+    <ul>
+      <li *ngFor="let item of cartItems?.products">
+        {{ item.title }} - {{ item.price | currency:'INR':'symbol':'1.2-2' }} x {{ item.quantity }}
+      </li>
+    </ul>
+  
+    <p>Total Price: {{ cartItems?.totalPrice | currency:'INR':'symbol':'1.2-2' }}</p>
+</div>
+  
