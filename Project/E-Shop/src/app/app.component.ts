@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { UserService } from './Service/user.service';
 import { Router } from '@angular/router';
+import { User } from './Models/user';
 
 @Component({
   selector: 'app-root',
@@ -17,6 +18,7 @@ export class AppComponent {
 
   logout(): void {
     this.userService.logout(); 
+    this.isLoggedIn = false;
     this.router.navigate(['/login']); 
   }
 }

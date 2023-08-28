@@ -11,10 +11,9 @@ import { User } from '../Models/user';
 export class RegisterComponent {
 
   user: User = {
-    id: 1,
     email: '',
     password: '',
-    state: false,
+    isLoggedIn: false,
     orderHistory: []
   };
 

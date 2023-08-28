@@ -27,6 +27,7 @@ export class UserService {
   
   // User Registration
   register(user: User): void {
+    user.isLoggedIn = false;
     this.users.push(user); // Add the new user to the array
     localStorage.setItem(this.USER_KEY, JSON.stringify(this.users));
   }
@@ -38,14 +39,22 @@ export class UserService {
 
     const user = this.users.find(u => u.email === email && u.password === password);
     if (user) {
+      user.isLoggedIn = true;
+      localStorage.setItem(this.USER_KEY, JSON.stringify(user));
       return true;
     }
     return false;
   }
 
   logout(): void {
-    return localStorage.removeItem(this.USER_KEY);
+    const storedUser = localStorage.getItem(this.USER_KEY);
+    if (storedUser) {
+      const user: User = JSON.parse(storedUser);
+      user.isLoggedIn = false;
+      localStorage.setItem(this.USER_KEY, JSON.stringify(user));
+    }
   }
+
 
   isLoggedIn(): boolean {
     return !!localStorage.getItem(this.USER_KEY);

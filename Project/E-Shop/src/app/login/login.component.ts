@@ -11,7 +11,6 @@ export class LoginComponent {
 
   email = '';
   password = '';
-  errorMessage = '';
 
   constructor(private userService: UserService, private router: Router) {
   }
@@ -23,7 +22,7 @@ export class LoginComponent {
       this.router.navigate(['']);
     } else {
       // Display error message if login attempt fails
-      this.errorMessage = 'Invalid email or password';
+      alert('Invalid email or password');
     }
   }
 }
