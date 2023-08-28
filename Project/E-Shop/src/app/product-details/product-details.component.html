@@ -38,7 +38,7 @@
                             </div>
                             <p class="fw-bold mt-2">Rating: <span class="text-warning">{{ displayRating(products.rating.rate) }}</span> ({{products.rating.count}})</p>
                             <div class="mt-2 d-grid">
-                                <button *ngIf="isAuthenticated$ | async" (click)="addToCart(products)" type="submit" class="btn btn-warning text-uppercase ">Buy Now <i
+                                <button (click)="addToCart(products)" type="submit" class="btn btn-warning text-uppercase ">Buy Now <i
                                     class="bi bi-cart-plus"></i></button>
                             </div>
                         </div>

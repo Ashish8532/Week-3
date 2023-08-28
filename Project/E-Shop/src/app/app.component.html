@@ -14,10 +14,10 @@
             </a>
           </li>
           <li class="nav-item">
-            <a *ngIf="isAuthenticated$ | async" class="nav-link" routerLink="/about">Dashboard</a>
+            <a class="nav-link" routerLink="/dashboard">Dashboard</a>
           </li>
         </ul>
-        <a *ngIf="isAuthenticated$ | async" routerLink="/cart-list">
+        <a routerLink="/cart-list">
           <span class="navbar-text me-sm-4">
             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
               class="bi bi-cart text-danger" viewBox="0 0 16 16">
@@ -32,17 +32,20 @@
             <a class="btn btn-secondary"><i class="bi bi-search"></i></a>
           </form>
         </div>
-        <ng-container *ngIf="!(isAuthenticated$ | async)">
+        <ng-container *ngIf="isLoggedIn; else loggedOut">
+          <div class="float-right">
+            <a (click)="logout()" class="btn btn-warning" asp-area="Users" asp-controller="Home"
+              asp-action="Logout">Logout</a>
+          </div>
+        </ng-container>
+        <ng-template #loggedOut>
           <div class="me-sm-2">
             <a class="btn btn-light" routerLink="/register">Register</a>
           </div>
           <div class="me-sm-2">
             <a class="btn btn-danger" routerLink="/login">Login</a>
           </div>
-        </ng-container>
-        <div *ngIf="isAuthenticated$ | async" class="float-right">
-          <a (click)="logout()" class="btn btn-warning" asp-area="Users" asp-controller="Home" asp-action="Logout">Logout</a>
-      </div>
+        </ng-template>
       </div>
     </div>
   </nav>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../Service/product.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from '../Models/product';
 import { CartService } from '../Service/cart.service';
 import { Observable } from 'rxjs';
@@ -17,13 +17,11 @@ export class ProductDetailsComponent implements OnInit {
   products: any = {};
   selectedQuantity = 1;
 
-  isAuthenticated$: Observable<boolean>; 
 
   constructor(private productService: ProductService, 
     private route: ActivatedRoute, 
     private cartService: CartService,
-    private userService: UserService) {
-      this.isAuthenticated$ = this.userService.isAuthenticated$;
+    private router: Router) {
     }
    
   ngOnInit(): void {
@@ -51,6 +49,7 @@ export class ProductDetailsComponent implements OnInit {
     if (product && this.selectedQuantity > 0) {
       this.cartService.addToCart(product, this.selectedQuantity); // Add the product to the cart
       this.selectedQuantity = 1; // Reset the selected quantity to 1
+      this.router.navigate(['/cart-list']);
     }
   }
 }

@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from '../Models/product';
-import { ShippingDetails } from '../Models/shipping-details';
 import { CheckoutService } from '../Service/checkout.service';
-import { CartItems } from '../Models/cart-items';
 import { UserService } from '../Service/user.service';
-import { Observable } from 'rxjs';
+import { Order } from '../Models/order';
 
 @Component({
   selector: 'app-order-confirmation',
@@ -13,23 +10,12 @@ import { Observable } from 'rxjs';
 })
 export class OrderConfirmationComponent implements OnInit {
 
-  cartItems: CartItems | null = null;
-  shippingDetails: ShippingDetails | null = null;
-  totalCartPrice = 0;
-
-  isAuthenticated$: Observable<boolean>; 
+  orderId: number = 0;
+  order: Order | null = null;
   
-  constructor(private checkoutService: CheckoutService, private userService: UserService) {
-    this.isAuthenticated$ = this.userService.isAuthenticated$;
-  }
+  constructor(private checkoutService: CheckoutService, private userService: UserService) {}
 
   ngOnInit(): void {
-    this.checkoutService.cartModel$.subscribe(items => {
-      this.cartItems = items;
-    });
-
-    this.checkoutService.shippingDetails$.subscribe(details => {
-      this.shippingDetails = details;
-    });
+    this.order = this.checkoutService.getLastPlacedOrder();
   }
 }

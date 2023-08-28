@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { UserService } from '../Service/user.service';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { User } from '../Models/user';
 
 @Component({
   selector: 'app-register',
@@ -10,17 +10,19 @@ import { Observable } from 'rxjs';
 })
 export class RegisterComponent {
 
-  email = '';
-  password = '';
-  isAuthenticated$: Observable<boolean>; 
+  user: User = {
+    id: 1,
+    email: '',
+    password: '',
+    state: false,
+    orderHistory: []
+  };
 
   constructor(private userService: UserService, private router: Router) {
-    this.isAuthenticated$ = this.userService.isAuthenticated$;
   }
 
   register(): void {
-    this.userService.register(this.email, this.password);
-
+    this.userService.register(this.user);
     this.router.navigate(['/login']);
   }
 }

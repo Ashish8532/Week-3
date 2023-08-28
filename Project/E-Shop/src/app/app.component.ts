@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
 import { UserService } from './Service/user.service';
 import { Router } from '@angular/router';
 
@@ -10,15 +9,14 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'E-Shop';
-  isAuthenticated$: Observable<boolean>; 
+  isLoggedIn: boolean = false;
 
-  constructor(private userService: UserService, private router: Router) {
-    this.isAuthenticated$ = this.userService.isAuthenticated$;
+  constructor(public userService: UserService, private router: Router) {
+    this.isLoggedIn = this.userService.isLoggedIn();
   }
 
   logout(): void {
-    // Perform logout logic here
-    this.userService.logout(); // Simulated logout
+    this.userService.logout(); 
     this.router.navigate(['/login']); 
   }
 }

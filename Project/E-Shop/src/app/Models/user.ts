@@ -1,8 +1,9 @@
-import { CartItems } from "./cart-items";
+import { Order } from "./order";
 
 export interface User {
+   id: number;
     email: string;
   password: string;
-  cart: CartItems; 
-//   orderHistory: OrderModel[];
+  state: boolean;
+  orderHistory: Order[];
 }

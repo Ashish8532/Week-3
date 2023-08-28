@@ -7,6 +7,9 @@ import { BehaviorSubject, Observable, map } from 'rxjs';
 })
 export class UserService {
 
+  private readonly USER_KEY = 'user';
+  private users: User[] = [];
+
   private currentUserSubject = new BehaviorSubject<User | null>(null);
   currentUser$: Observable<User | null> = this.currentUserSubject.asObservable();
   // Observable indicating user authentication status
@@ -14,51 +17,42 @@ export class UserService {
   isAuthenticated$: Observable<boolean> = this.isAuthenticatedSubject.asObservable();
 
   constructor() {
-    // ...
-    this.isAuthenticated$ = this.currentUser$.pipe(map(user => !!user));
+    const storedUsers = localStorage.getItem(this.USER_KEY);
+    if (storedUsers) {
+      this.users = JSON.parse(storedUsers);
+    } else {
+      this.users = []; // Initialize as an empty array if no users are stored yet
+    }
   }
   
   // User Registration
-  register(email: string, password: string): void {
-    // In a real app, you would typically make an API request to register the user
-    // For now, let's just simulate it by creating a user object
-    const newUser: User = {
-      email,
-      password,
-      cart: { products: [], totalPrice: 0 }
-      // orderHistory: []
-    };
-    this.currentUserSubject.next(newUser);
+  register(user: User): void {
+    this.users.push(user); // Add the new user to the array
+    localStorage.setItem(this.USER_KEY, JSON.stringify(this.users));
   }
 
   login(email: string, password: string): boolean {
-    // Simulated login logic
-    const user = this.findUserByEmailAndPassword(email, password);
-
-    if (user) {
-      this.currentUserSubject.next(user);
-      this.isAuthenticatedSubject.next(true);
-      return true; // Login successful
-    } else {
-      return false; // Login failed
+    if (this.users.length === 0) {
+      return false; // No users stored yet
     }
+
+    const user = this.users.find(u => u.email === email && u.password === password);
+    if (user) {
+      return true;
+    }
+    return false;
   }
 
   logout(): void {
-    this.currentUserSubject.next(null);
-    this.isAuthenticatedSubject.next(false);
+    return localStorage.removeItem(this.USER_KEY);
   }
 
-  private findUserByEmailAndPassword(email: string, password: string): User | null {
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem(this.USER_KEY);
+  }
 
-    const hardcodedUsers: User[] = [
-      {
-        email: 'user@example.com',
-        password: 'password',
-        cart: { products: [], totalPrice: 0 }
-        // orderHistory: []
-      }
-    ];
-    return hardcodedUsers.find(user => user.email === email && user.password === password) || null;
+  getUser(): User | null {
+    const userData = localStorage.getItem(this.USER_KEY);
+    return userData ? JSON.parse(userData) : null;
   }
 }

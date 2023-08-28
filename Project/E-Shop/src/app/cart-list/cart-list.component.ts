@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../Models/product';
 import { CartService } from '../Service/cart.service';
-import { Observable } from 'rxjs';
 import { UserService } from '../Service/user.service';
 
 @Component({
@@ -13,10 +12,8 @@ export class CartListComponent implements OnInit {
   cartItems: Product[] = [];
   totalCartPrice = 0;
 
-  isAuthenticated$: Observable<boolean>; 
 
   constructor(private cartService: CartService, private userService: UserService) { 
-    this.isAuthenticated$ = this.userService.isAuthenticated$;
   }
 
   ngOnInit(): void {

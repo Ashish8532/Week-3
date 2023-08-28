@@ -1,4 +1,4 @@
-<div *ngIf="isAuthenticated$ | async" style="width:80%; margin-left:150px; margin-top:50px">
+<div style="width:80%; margin-left:150px; margin-top:50px">
     <div class="card border-2">
         <div class="card-header bg-dark text-light ml-0">
             <div class="row col-12">
@@ -11,7 +11,7 @@
                 </div>
             </div>
         </div>
-        <h4 class="text-center mt-4" *ngIf="cartItems.length === 0">Your cart is empty.</h4>
+        <h4 class="text-center mt-2" *ngIf="cartItems.length === 0">Your cart is empty.</h4>
         <div class="card-body bg-white" *ngFor="let item of cartItems">
             <div class="row col-12">
                 <div class="col-md-6">
@@ -48,13 +48,16 @@
                     </div>
                 </div>
             </div>
-            <hr />
         </div>
-        <div class="row me-sm-5">
-            <a routerLink="/checkout" *ngIf="cartItems.length > 0">Proceed to Checkout</a>
-            <div class="text-end mb-4">
-                <div *ngIf="cartItems.length > 0" class="total-price">
-                    <strong>Total Price: {{ totalCartPrice | currency:'INR':'symbol':'1.2-2' }}</strong>
+        <div class="card-footer bg-light text-light ml-0 p-4">
+            <div class="col-12 row me-sm-5">
+                <div class="col-6">
+                    <a class="btn btn-success" routerLink="/checkout" *ngIf="cartItems.length > 0">Proceed to Checkout</a>
+                </div>
+                <div class="col-6 text-end text-dark">
+                    <div *ngIf="cartItems.length > 0" class="total-price">
+                        <strong>Total Price: {{ totalCartPrice | currency:'INR':'symbol':'1.2-2' }}</strong>
+                    </div>
                 </div>
             </div>
         </div>
