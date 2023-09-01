@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { BehaviorSubject, Observable, of, tap } from 'rxjs';
 import { Product } from '../Models/product';
 
 @Injectable({
@@ -15,9 +15,8 @@ export class ProductService {
       'Content-Type': 'application/json'
     })
   }
-  blogPosts: any[] = [];
 
-  private newPosts: Product[] = []; // Array to store local posts
+  private products: Product[] = []; // Array to store local posts
   
 
   constructor(private httpClient: HttpClient) {
@@ -29,9 +28,9 @@ export class ProductService {
 
   fetchProducts() {
     this.httpClient.get<Product[]>(this.apiUrl).pipe(
-      tap((newPosts) => {
-        this.newPosts = newPosts;
-        this.productSubject$.next([...this.newPosts]);
+      tap((product) => {
+        this.products = product;
+        this.productSubject$.next([...this.products]);
       })
     ).subscribe();
   }

@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
 export class ProductListComponent implements OnInit {
 
   products: Product[] = [];
+  filteredProducts: Product[] = [];
+  searchQuery: string = '';
 
   constructor(private productService: ProductService, private route: Router) {}
 
@@ -22,5 +24,16 @@ export class ProductListComponent implements OnInit {
     this.productService.getProducts().subscribe((data: Product[])=>{
       this.products = data;
     }); 
+  }
+
+  searchProducts(): void {
+    if(this.searchQuery) {
+      this.products = this.products.filter(product =>
+        product.title.toLowerCase().includes(this.searchQuery.toLowerCase())
+      );
+    }
+    else {
+      this.getProduct();
+    }
   }
 }
